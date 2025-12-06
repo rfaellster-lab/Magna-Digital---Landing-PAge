@@ -9,5 +9,6 @@ export const WA_MESSAGES = {
     NAVBAR: "Olá! Gostaria de solicitar um orçamento para o MagnaWeb.",
     HERO: "Olá! Quero garantir minha vaga na oferta Premium da MagnaWeb.",
     PRICING: "Olá! Estou pronto para reivindicar minha autoridade digital com o Pacote Imperial.",
-    GENERAL: "Olá! Gostaria de mais informações sobre a MagnaWeb."
+    GENERAL: "Olá! Gostaria de mais informações sobre a MagnaWeb.",
+    FLOATING: "Olá, vi o site da Magna e quero minha oferta de 249."
 };

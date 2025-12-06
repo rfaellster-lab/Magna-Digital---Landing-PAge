@@ -9,10 +9,14 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Image Comparison Slider -->
+    <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,14 +26,22 @@
                 extend: {
                     colors: {
                         gold: {
-                            100: '#F9F1D8',
-                            300: '#EEDC9A',
-                            500: '#D4AF37', // Ouro Clássico
-                            600: '#AA8C2C',
-                            900: '#5E4B12',
+                            100: '#FBF5E6',
+                            200: '#F2E2B8',
+                            300: '#E6C875',
+                            400: '#D4AF37', // Base Gold
+                            500: '#C5A028',
+                            600: '#A08018',
+                            700: '#755C0F',
+                            900: '#423205',
                         },
-                        obsidian: '#050505',
-                        charcoal: '#0F0F0F',
+                        obsidian: '#020202',
+                        charcoal: '#0A0A0A',
+                        tech: {
+                            dark: '#050505',
+                            panel: '#0F0F0F',
+                            border: 'rgba(255, 255, 255, 0.08)'
+                        }
                     },
                     fontFamily: {
                         serif: ['Cinzel', 'serif'],
@@ -37,12 +49,15 @@
                     },
                     backgroundImage: {
                         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                        'gold-shine': 'linear-gradient(45deg, #AA8C2C, #F9F1D8, #AA8C2C)',
+                        'gold-shine': 'linear-gradient(135deg, #A08018 0%, #F2E2B8 50%, #A08018 100%)',
+                        'tech-grid': 'linear-gradient(to right, #ffffff03 1px, transparent 1px), linear-gradient(to bottom, #ffffff03 1px, transparent 1px)',
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'float-delayed': 'float 6s ease-in-out 3s infinite',
-                        'pulse-gold': 'pulse-gold 2s infinite',
+                        'pulse-gold': 'pulse-gold 3s infinite',
+                        'shimmer': 'shimmer 3s infinite',
+                        'scroll': 'scroll 2s ease-in-out infinite',
                     },
                     keyframes: {
                         float: {
@@ -50,9 +65,17 @@
                             '50%': { transform: 'translateY(-20px)' },
                         },
                         'pulse-gold': {
-                            '0%': { boxShadow: '0 0 0 0 rgba(212, 175, 55, 0.4)' },
-                            '70%': { boxShadow: '0 0 0 15px rgba(212, 175, 55, 0)' },
+                            '0%': { boxShadow: '0 0 0 0 rgba(212, 175, 55, 0.2)' },
+                            '70%': { boxShadow: '0 0 0 10px rgba(212, 175, 55, 0)' },
                             '100%': { boxShadow: '0 0 0 0 rgba(212, 175, 55, 0)' },
+                        },
+                        shimmer: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' },
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateY(0)', opacity: 1 },
+                            '100%': { transform: 'translateY(10px)', opacity: 0 },
                         }
                     }
                 }
@@ -62,64 +85,64 @@
 
     <style>
         body {
-            background-color: #050505;
+            background-color: #020202;
             color: #e2e8f0;
             overflow-x: hidden;
+            font-feature-settings: "cv11", "ss01";
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Selection Style - High End Feel */
+        ::selection {
+            background-color: #D4AF37;
+            color: #000;
         }
 
         /* Scrollbar */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #0F0F0F;
+            background: #020202;
         }
         ::-webkit-scrollbar-thumb {
             background: #333;
-            border-radius: 4px;
+            border-radius: 3px;
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #D4AF37;
         }
 
-        /* Glassmorphism */
+        /* Premium Glassmorphism */
         .glass-panel {
-            background: rgba(20, 20, 20, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: rgba(5, 5, 5, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
         
         .glass-card {
-            background: rgba(20, 20, 20, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            transition: all 0.4s ease;
+            background: rgba(15, 15, 15, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .glass-card:hover {
-            background: rgba(212, 175, 55, 0.05);
+            background: rgba(20, 20, 20, 0.8);
             border-color: rgba(212, 175, 55, 0.3);
             transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
         }
 
         /* Text Gradients */
         .text-gold-gradient {
-            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            background: linear-gradient(to bottom right, #F2E2B8, #D4AF37, #A08018);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            background-size: 200% auto;
-            animation: shine 5s linear infinite;
-        }
-
-        @keyframes shine {
-            to {
-                background-position: 200% center;
-            }
         }
 
         /* Canvas Container */
@@ -130,25 +153,39 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.4;
+            opacity: 0.3;
             pointer-events: none;
         }
 
-        /* Utilities */
-        .clip-diagonal {
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        /* Cinematic Grain (Noise) - Adjusted Opacity */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.035;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            mix-blend-mode: overlay;
         }
-        
-        .perspective-1000 {
-            perspective: 1000px;
+
+        /* Tech Background Grid */
+        .bg-tech-grid {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
         }
-        
-        .rotate-y-12 {
-            transform: rotateY(12deg);
-        }
-        
-        .rotate-x-6 {
-            transform: rotateX(6deg);
+
+        /* Slider Customization */
+        img-comparison-slider {
+            --divider-width: 1px;
+            --divider-color: #D4AF37;
+            --default-handle-opacity: 1;
+            border-radius: 0.75rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
+            outline: none;
         }
     </style>
   <script type="importmap">
@@ -158,12 +195,31 @@
     "react": "https://aistudiocdn.com/react@^19.2.1",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
     "gsap/": "https://aistudiocdn.com/gsap@^3.13.0/",
-    "gsap": "https://aistudiocdn.com/gsap@^3.13.0"
+    "gsap": "https://aistudiocdn.com/gsap@^3.13.0",
+    "gsap/ScrollTrigger": "https://aistudiocdn.com/gsap@^3.13.0/ScrollTrigger"
   }
 }
 </script>
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1537950703545234');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1537950703545234&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 </head>
   <body>
+    <div class="noise-overlay"></div>
     <div id="root"></div>
   </body>
 </html>
