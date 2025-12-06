@@ -6,24 +6,6 @@
     <title>MagnaWeb | A Elite do Posicionamento Digital</title>
     <meta name="description" content="Criação de Landing Pages de Alto Padrão com Domínio Incluso por R$ 249,90." />
 
-    <!-- Meta Pixel Code -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1537950703545234');
-      fbq('track', 'PageView');
-    </script>
-    <noscript>
-      <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1537950703545234&ev=PageView&noscript=1" />
-    </noscript>
-    <!-- End Meta Pixel Code -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -202,15 +184,14 @@
             outline: none;
         }
     </style>
-  <script type="importmap">
+<script type="importmap">
 {
   "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.1/",
     "react": "https://aistudiocdn.com/react@^19.2.1",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
-    "gsap/": "https://aistudiocdn.com/gsap@^3.13.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
     "gsap": "https://aistudiocdn.com/gsap@^3.13.0",
-    "gsap/ScrollTrigger": "https://aistudiocdn.com/gsap@^3.13.0/ScrollTrigger"
+    "gsap/": "https://aistudiocdn.com/gsap@^3.13.0/"
   }
 }
 </script>
@@ -218,7 +199,7 @@
   <body>
     <div class="noise-overlay"></div>
     <div id="root"></div>
-
-    <script type="module" src="/index.tsx"></script>
+    <!-- Entry point corrected to ./index.tsx for flat directory structure -->
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>
