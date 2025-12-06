@@ -6,15 +6,35 @@
     <title>MagnaWeb | A Elite do Posicionamento Digital</title>
     <meta name="description" content="Criação de Landing Pages de Alto Padrão com Domínio Incluso por R$ 249,90." />
 
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1537950703545234');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1537950703545234&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- External Assets -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    
+    <!-- Image Comparison Slider Support -->
     <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
 
+    <!-- Tailwind Configuration -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -54,6 +74,8 @@
                         'pulse-gold': 'pulse-gold 3s infinite',
                         'shimmer': 'shimmer 3s infinite',
                         'scroll': 'scroll 2s ease-in-out infinite',
+                        'fadeIn': 'fadeIn 0.5s ease-out',
+                        'scaleUp': 'scaleUp 0.3s ease-out',
                     },
                     keyframes: {
                         float: {
@@ -72,6 +94,14 @@
                         scroll: {
                             '0%': { transform: 'translateY(0)', opacity: 1 },
                             '100%': { transform: 'translateY(10px)', opacity: 0 },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: 0 },
+                            '100%': { opacity: 1 },
+                        },
+                        scaleUp: {
+                            '0%': { transform: 'scale(0.95)' },
+                            '100%': { transform: 'scale(1)' },
                         }
                     }
                 }
@@ -88,7 +118,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Selection Style - High End Feel */
+        /* Selection Style */
         ::selection {
             background-color: #D4AF37;
             color: #000;
@@ -153,7 +183,7 @@
             pointer-events: none;
         }
 
-        /* Cinematic Grain (Noise) - Adjusted Opacity */
+        /* Cinematic Grain (Noise) */
         .noise-overlay {
             position: fixed;
             top: 0;
@@ -183,8 +213,13 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9);
             outline: none;
         }
+        
+        /* Floating Button Animation */
+        .magnetic-btn {
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
     </style>
-<script type="importmap">
+  <script type="importmap">
 {
   "imports": {
     "react": "https://aistudiocdn.com/react@^19.2.1",
@@ -199,7 +234,6 @@
   <body>
     <div class="noise-overlay"></div>
     <div id="root"></div>
-    <!-- Entry point corrected to ./index.tsx for flat directory structure -->
     <script type="module" src="./index.tsx"></script>
   </body>
 </html>
